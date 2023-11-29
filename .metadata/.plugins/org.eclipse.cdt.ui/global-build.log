@@ -1,0 +1,207 @@
+12:49:08 **** Incremental Build of configuration Debug for project ex04 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/ex04.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/ex04.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../ex01_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/ex04.d" -MT"src/ex04.o" -o "src/ex04.o" "../src/ex04.c"
+../src/ex04.c:8:1: error: unknown type name 'XGpio'
+ XGpio Buttons;
+ ^~~~~
+../src/ex04.c: In function 'main':
+../src/ex04.c:44:11: warning: implicit declaration of function 'XGpio_Initialize'; did you mean 'ScuGic_Initialize'? [-Wimplicit-function-declaration]
+  Status = XGpio_Initialize(&Buttons, XPAR_GPIO_0_DEVICE_ID);
+           ^~~~~~~~~~~~~~~~
+           ScuGic_Initialize
+../src/ex04.c:45:2: warning: implicit declaration of function 'XGpio_SetDataDirection' [-Wimplicit-function-declaration]
+  XGpio_SetDataDirection(&Buttons, 2, 0xFF); //inputs
+  ^~~~~~~~~~~~~~~~~~~~~~
+../src/ex04.c:55:2: warning: implicit declaration of function 'XGpio_InterruptEnable'; did you mean 'XScuGic_InterruptHandler'? [-Wimplicit-function-declaration]
+  XGpio_InterruptEnable(&Buttons, 2);
+  ^~~~~~~~~~~~~~~~~~~~~
+  XScuGic_InterruptHandler
+../src/ex04.c:56:2: warning: implicit declaration of function 'XGpio_InterruptGlobalEnable' [-Wimplicit-function-declaration]
+  XGpio_InterruptGlobalEnable(&Buttons);
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/ex04.c:41:6: warning: variable 'Status' set but not used [-Wunused-but-set-variable]
+  int Status;
+      ^~~~~~
+../src/ex04.c: In function 'Buttons_ISR':
+../src/ex04.c:64:2: warning: implicit declaration of function 'XGpio_InterruptDisable'; did you mean 'XScuGic_InterruptHandler'? [-Wimplicit-function-declaration]
+  XGpio_InterruptDisable(&Buttons, 2);
+  ^~~~~~~~~~~~~~~~~~~~~~
+  XScuGic_InterruptHandler
+../src/ex04.c:68:8: warning: implicit declaration of function 'XGpio_DiscreteRead'; did you mean 'XScuGic_DistWriteReg'? [-Wimplicit-function-declaration]
+   if ((XGpio_DiscreteRead(&Buttons, 2) & desp) == 1)
+        ^~~~~~~~~~~~~~~~~~
+        XScuGic_DistWriteReg
+../src/ex04.c:73:2: warning: implicit declaration of function 'XGpio_InterruptClear'; did you mean 'XScuGic_InterruptHandler'? [-Wimplicit-function-declaration]
+  XGpio_InterruptClear(&Buttons, 2); // Clear interrupt flag
+  ^~~~~~~~~~~~~~~~~~~~
+  XScuGic_InterruptHandler
+make: *** [src/subdir.mk:26: src/ex04.o] Error 1
+12:49:47 **** Auto Build of configuration Debug for project ex04 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/ex04.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/ex04.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../ex01_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/ex04.d" -MT"src/ex04.o" -o "src/ex04.o" "../src/ex04.c"
+../src/ex04.c: In function 'main':
+../src/ex04.c:42:6: warning: variable 'Status' set but not used [-Wunused-but-set-variable]
+  int Status;
+      ^~~~~~
+'Finished building: ../src/ex04.c'
+' '
+'Building target: ex04.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../ex01_bsp/ps7_cortexa9_0/lib -o "ex04.elf"  ./src/ex04.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: ex04.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size ex04.elf  |tee "ex04.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  35332	   2352	  23304	  60988	   ee3c	ex04.elf
+'Finished building: ex04.elf.size'
+' '
+12:50:46 **** Incremental Build of configuration Debug for project ex04 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.
+12:51:15 **** Incremental Build of configuration Debug for project ex04 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.
+12:51:46 **** Auto Build of configuration Debug for project ex04 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/ex04.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/ex04.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../ex01_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/ex04.d" -MT"src/ex04.o" -o "src/ex04.o" "../src/ex04.c"
+../src/ex04.c: In function 'main':
+../src/ex04.c:42:6: warning: variable 'Status' set but not used [-Wunused-but-set-variable]
+  int Status;
+      ^~~~~~
+'Finished building: ../src/ex04.c'
+' '
+'Building target: ex04.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../ex01_bsp/ps7_cortexa9_0/lib -o "ex04.elf"  ./src/ex04.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: ex04.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size ex04.elf  |tee "ex04.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  35332	   2352	  23304	  60988	   ee3c	ex04.elf
+'Finished building: ex04.elf.size'
+' '
+12:53:48 **** Auto Build of configuration Debug for project ex04 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/ex04.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/ex04.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../ex01_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/ex04.d" -MT"src/ex04.o" -o "src/ex04.o" "../src/ex04.c"
+../src/ex04.c: In function 'main':
+../src/ex04.c:42:6: warning: variable 'Status' set but not used [-Wunused-but-set-variable]
+  int Status;
+      ^~~~~~
+'Finished building: ../src/ex04.c'
+' '
+'Building target: ex04.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../ex01_bsp/ps7_cortexa9_0/lib -o "ex04.elf"  ./src/ex04.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: ex04.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size ex04.elf  |tee "ex04.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  35332	   2352	  23304	  60988	   ee3c	ex04.elf
+'Finished building: ex04.elf.size'
+' '
+12:54:59 **** Auto Build of configuration Debug for project ex04 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/ex04.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/ex04.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../ex01_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/ex04.d" -MT"src/ex04.o" -o "src/ex04.o" "../src/ex04.c"
+../src/ex04.c: In function 'main':
+../src/ex04.c:42:6: warning: variable 'Status' set but not used [-Wunused-but-set-variable]
+  int Status;
+      ^~~~~~
+'Finished building: ../src/ex04.c'
+' '
+'Building target: ex04.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../ex01_bsp/ps7_cortexa9_0/lib -o "ex04.elf"  ./src/ex04.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: ex04.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size ex04.elf  |tee "ex04.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  35332	   2352	  23304	  60988	   ee3c	ex04.elf
+'Finished building: ex04.elf.size'
+' '
+12:55:05 **** Incremental Build of configuration Debug for project ex04 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.
+12:56:12 **** Build of configuration Debug for project ex05 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../ex01_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+'Finished building: ../src/helloworld.c'
+' '
+'Building file: ../src/platform.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../ex01_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/platform.d" -MT"src/platform.o" -o "src/platform.o" "../src/platform.c"
+'Finished building: ../src/platform.c'
+' '
+'Building target: ex05.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../ex01_bsp/ps7_cortexa9_0/lib -o "ex05.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: ex05.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size ex05.elf  |tee "ex05.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  19064	   1144	  22568	  42776	   a718	ex05.elf
+'Finished building: ex05.elf.size'
+' '
+12:59:20 **** Clean-only build of configuration Debug for project ex05 ****
+make clean 
+rm -rf  ./src/helloworld.o ./src/platform.o  ./src/helloworld.d ./src/platform.d  ex05.elf.size  ex05.elf
+' '
+12:59:21 **** Auto Build of configuration Debug for project ex05 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/ex05.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/ex05.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../ex01_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/ex05.d" -MT"src/ex05.o" -o "src/ex05.o" "../src/ex05.c"
+'Finished building: ../src/ex05.c'
+' '
+'Building file: ../src/platform.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../ex01_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/platform.d" -MT"src/platform.o" -o "src/platform.o" "../src/platform.c"
+'Finished building: ../src/platform.c'
+' '
+'Building target: ex05.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../ex01_bsp/ps7_cortexa9_0/lib -o "ex05.elf"  ./src/ex05.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: ex05.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size ex05.elf  |tee "ex05.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  19064	   1144	  22568	  42776	   a718	ex05.elf
+'Finished building: ex05.elf.size'
+' '
