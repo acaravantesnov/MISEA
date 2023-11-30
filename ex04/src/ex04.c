@@ -9,6 +9,31 @@ void Buttons_ISR(void *CallBackRef); // ISR Declaration
 XGpio	Buttons;
 XScuGic IntcInstance;
 
+int ScuGic_Initialize(XScuGic *IntcInstancePtr);
+int SetUpExceptions(XScuGic *XscuGicInstancePtr);
+
+int main(void)
+{
+	int Status;
+
+	// Peripheral configuration
+	Status = XGpio_Initialize(&Buttons, XPAR_GPIO_0_DEVICE_ID);
+	XGpio_SetDataDirection(&Buttons, 2, 0xFF); //inputs
+
+	ScuGic_Initialize(&IntcInstance);
+
+	// Configure XScuGic
+	XScuGic_SetPriorityTriggerType(&IntcInstance, GPIO_INT_ID, 0xa0, 0x3);
+	Status = XScuGic_Connect(&IntcInstance, GPIO_INT_ID, (Xil_InterruptHandler)Buttons_ISR, &Buttons);
+	XScuGic_Enable(&IntcInstance, GPIO_INT_ID);
+
+	// Configure GPIO Interrupts
+	XGpio_InterruptEnable(&Buttons, 2);
+	XGpio_InterruptGlobalEnable(&Buttons);
+
+	SetUpExceptions(&IntcInstance);
+}
+
 // Use this function to initialize SCUGIC
 int ScuGic_Initialize (XScuGic *IntcInstancePtr)
 {
@@ -35,28 +60,6 @@ int SetUpExceptions (XScuGic *XScuGicInstancePtr)
 	XScuGicInstancePtr); // Pointer to XScuGic instance
 	Xil_ExceptionEnable (); //Enable interrupts
 	return XST_SUCCESS;
-}
-
-int main(void)
-{
-	int Status;
-
-	// Peripheral configuration
-	Status = XGpio_Initialize(&Buttons, XPAR_GPIO_0_DEVICE_ID);
-	XGpio_SetDataDirection(&Buttons, 2, 0xFF); //inputs
-
-	ScuGic_Initialize(&IntcInstance);
-
-	// Configure XScuGic
-	XScuGic_SetPriorityTriggerType(&IntcInstance, GPIO_INT_ID, 0xa0, 0x3);
-	Status = XScuGic_Connect(&IntcInstance, GPIO_INT_ID, (Xil_InterruptHandler)Buttons_ISR, &Buttons);
-	XScuGic_Enable(&IntcInstance, GPIO_INT_ID);
-
-	// Configure GPIO Interrupts
-	XGpio_InterruptEnable(&Buttons, 2);
-	XGpio_InterruptGlobalEnable(&Buttons);
-
-	SetUpExceptions(&IntcInstance);
 }
 
 // Interrupt function
